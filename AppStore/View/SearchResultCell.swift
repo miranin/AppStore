@@ -25,15 +25,11 @@ class SearchResultCell: UICollectionViewCell {
             if appResult.screenshotUrls.count > 2 {
                 screenshot3ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
             }
-            
         }
-        
     }
-    
-    
+ 
     let appIconImageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .red
         iv.snp.makeConstraints { make in
             make.width.equalTo(64)
             make.height.equalTo(64)
@@ -67,7 +63,6 @@ class SearchResultCell: UICollectionViewCell {
     
     func createScreenshots() -> UIImageView {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
         imageView.layer.cornerRadius = 8
         imageView.layer.borderWidth = 0.5
         imageView.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
@@ -94,10 +89,7 @@ class SearchResultCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        
-        
-        
-        
+      
         let infoTopStackView = UIStackView(arrangedSubviews: [
             appIconImageView,
             VerticalStackView(
