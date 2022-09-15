@@ -58,7 +58,7 @@ class AppSearchController:BaseListController, UICollectionViewDelegateFlowLayout
         }
         print("print request")
         Service.shared.fetchApps(searchItem: text) { res, err in
-            self.appResults = res
+            self.appResults = res?.results ?? []
             print("print response")
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -66,12 +66,12 @@ class AppSearchController:BaseListController, UICollectionViewDelegateFlowLayout
         }
     }
     fileprivate func fetchITunesApps() {
-        Service.shared.fetchApps(searchItem: "Twitter" ) { (results,error)  in
+        Service.shared.fetchApps(searchItem: "Twitter" ) { (res,error)  in
             if let error = error {
                 print("error occured \(error)")
                 return
             }
-            self.appResults = results
+            self.appResults = res?.results ?? [] 
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
