@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class SearchResultCell: UICollectionViewCell {
-    
     var appResult: Results! {
         didSet {
             nameLabel.text = appResult.trackName
@@ -27,7 +26,6 @@ class SearchResultCell: UICollectionViewCell {
             }
         }
     }
- 
     let appIconImageView: UIImageView = {
         let iv = UIImageView()
         iv.snp.makeConstraints { make in
@@ -38,29 +36,24 @@ class SearchResultCell: UICollectionViewCell {
         iv.clipsToBounds = true
         return iv
     }()
-    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "APP NAME"
         return label
     }()
-    
     let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "Photos & Video"
         return label
     }()
-    
     let ratingLabel: UILabel = {
         let label = UILabel()
         label.text = "9.25M"
         return label
     }()
-    
     lazy var screenshot1ImageView = self.createScreenshots()
     lazy var screenshot2ImageView = self.createScreenshots()
     lazy var screenshot3ImageView = self.createScreenshots()
-    
     func createScreenshots() -> UIImageView {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 8
@@ -69,8 +62,6 @@ class SearchResultCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         return imageView
     }
-    
-    
     private let getButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("GET", for: .normal)
@@ -84,12 +75,8 @@ class SearchResultCell: UICollectionViewCell {
         button.layer.cornerRadius = 16
         return button
     }()
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-      
         let infoTopStackView = UIStackView(arrangedSubviews: [
             appIconImageView,
             VerticalStackView(
@@ -98,31 +85,21 @@ class SearchResultCell: UICollectionViewCell {
                 spacing: 0),
             getButton
         ])
-        
         infoTopStackView.spacing = 12
         infoTopStackView.alignment = .center
-        
         let screenshotsStackView = UIStackView(arrangedSubviews: [
             screenshot1ImageView,
             screenshot2ImageView,
             screenshot3ImageView
         ])
-        
         screenshotsStackView.spacing = 12
-        
         screenshotsStackView.distribution = .fillEqually
-        
         let overallStackView = VerticalStackView(arrangedSubviews: [infoTopStackView, screenshotsStackView], spacing: 24)
-        
         addSubview(overallStackView)
-        
         overallStackView.snp.makeConstraints { make in
             make.edges.equalTo(self).inset(16)
-            
         }
-        
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
